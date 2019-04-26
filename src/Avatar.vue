@@ -26,7 +26,15 @@ export default {
 
   computed: {
     avatarLetter() {
-      return this.name[0].toUpperCase();
+      const parts = this.name.split(' ');
+
+      if (parts.length === 1) {
+        return parts[0][0].toUpperCase();
+      } else if (parts.length >= 2) {
+        return `${parts[0][0].toUpperCase()}${parts[1][0].toUpperCase()}`;
+      }
+
+      return '';
     },
     svgStyle() {
       // use hsl to define the background color.
